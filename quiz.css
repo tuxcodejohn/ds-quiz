@@ -1,0 +1,80 @@
+body { 
+  margin: 0 auto;
+  color: white;
+  background-color: #20203f;
+  text-align: center;
+  font-size: 200%;
+  font-family: sans-serif;
+}
+
+ul { 
+  list-style-type: none;
+  margin: 0;
+}
+li { 
+  display: inline-block;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+
+#players { 
+  margin-bottom: 2em;
+}
+#players li { 
+  margin: 0 0.5em;
+}
+#players li span {
+  margin: 0 0.2em;
+}
+.name {
+  color: #7f7f7f;
+}
+.score {
+  font-size: 66%;
+  color: #ccc;
+}
+.active { 
+  color: white;
+  font-weight: bold;
+}
+
+#tier { 
+  color: #ccc;
+  font-weight: bold;
+}
+#question { 
+  font-size: 300%;
+  max-width: 20em;
+  margin: 0 auto;
+}
+
+#answers {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+#answers ul {
+  margin: 0.5em 0.5em;
+  text-align: center;
+}
+#answers ul li { 
+  width: 30%;
+  padding: 0.1em 0.5em;
+  border: 0.2em solid #ccc;
+  border-radius: 1em;
+}
+
+.selected {
+  background-color: #ff9600;
+  color: black;
+}
+.right {
+  background-color: #06ff00;
+  color: black;
+}
+.wrong {
+  background-color: #ff2f00;
+  color: black;
+}
