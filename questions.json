@@ -1,0 +1,17 @@
+[
+    { question: "Как овас?",
+      answers: [ { text: "Орчин хорошо",
+		   right: true },
+		 { text: "Хорошо" },
+		 { text: "Не хорошо" },
+		 { text: "Исвинизие?" }
+	       ] },
+
+    { question: "где выхад?",
+      answers: [ { text: "Я вы́йду о вас" },
+		 { text: "Я не снаю" },
+		 { text: "слева",
+		   right: true },
+		 { text: "справа" }
+	       ] }
+]
