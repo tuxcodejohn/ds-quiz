@@ -78,3 +78,35 @@ p {
   background-color: #ff2f00;
   color: black;
 }
+
+form {
+  background-color: #30304f;
+  padding: 1em 0;
+}
+form label {
+  margin-right: 1em;
+}
+input {
+  color: white;
+  background-color: #00003f;
+  font-size: 100%;
+}
+
+ul#tiers {
+  text-align: right;
+  float: right;
+  margin: 2em auto;
+}
+ul#tiers li {
+  display: list-item;
+}
+
+#scoreboard dl {
+  width: 20em;
+  text-align: left;
+  margin: 1em auto;
+  font-size: 200%;
+}
+#scoreboard dl dd {
+  margin-left: 4em;
+}

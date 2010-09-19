@@ -6,17 +6,24 @@
   </head>
   <body>
 
-    <div id="setup">
+    <div id="setup" style="display: none">
       <h1>Datenspuren-<br>Quiz</h1>
 
-      
+      <form>
+	<label for="player1">Kandidat 1:</label><input id="player1"><br>
+	<label for="player2">Kandidat 2:</label><input id="player2"><br>
+	<label for="player3">Kandidat 3:</label><input id="player3"><br>
+	<label for="player4">Kandidat 4:</label><input id="player4"><br>
+	<label for="player5">Kandidat 5:</label><input id="player5"><br>
+	<input type="submit" value="▶">
+      </form>
     </div>
 
-    <div id="game">
+    <div id="game" style="display: none">
       <ul id="players">
-	<li><span class="name">Fnord</span><span class="score">£35,000</span></li>
-	<li><span class="name">Eris</span><span class="score">£5,000</span></li>
-	<li><span class="name active">Hagbard C.</span><span class="score">£67,000</span></li>
+	<li><span class="name">Fnord</span><span class="score">£ 35,000</span></li>
+	<li><span class="name">Eris</span><span class="score">£ 5,000</span></li>
+	<li><span class="name active">Hagbard C.</span><span class="score">£ 67,000</span></li>
       </ul>
       <p id="tier">
 	£30,000
@@ -36,7 +43,33 @@
       </div>
     </div>
 
-    <div id="scoreboard">
+    <div id="scoreboard" style="display: block">
+      <ul id="tiers">
+	<li>£ 1,000</li>
+	<li>£ 2,000</li>
+	<li>£ 3,000</li>
+	<li>£ 4,000</li>
+	<li>£ 5,000</li>
+	<li>£ 6,000</li>
+	<li>£ 7,000</li>
+	<li>£ 8,000</li>
+	<li>£ 9,000</li>
+	<li>£ 0,000,000</li>
+	<li>£ 1,000,000</li>
+	<li>£ 2,000,000</li>
+	<li>£ 3,000,000</li>
+	<li>£ 4,000,000</li>
+	<li>£ 5,000,000</li>
+      </ul>
+
+      <dl>
+	<dt>Fnord</dt>
+	<dd>£ 35,000</dd>
+	<dt>Eris</dt>
+	<dd>£ 5,000</dd>
+	<dt>Hagbard C.</dt>
+	<dd>£ 67,000</dd>
+      </dl>
     </div>
 
   </body>
