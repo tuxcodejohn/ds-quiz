@@ -3,23 +3,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="quiz.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="jquery-1.4.2.js" defer></script>
+    <script type="text/javascript" src="quiz.js" defer></script>
   </head>
   <body>
 
-    <div id="setup" style="display: none">
+    <div id="setup">
       <h1>Datenspuren-<br>Quiz</h1>
 
       <form>
-	<label for="player1">Kandidat 1:</label><input id="player1"><br>
-	<label for="player2">Kandidat 2:</label><input id="player2"><br>
-	<label for="player3">Kandidat 3:</label><input id="player3"><br>
-	<label for="player4">Kandidat 4:</label><input id="player4"><br>
-	<label for="player5">Kandidat 5:</label><input id="player5"><br>
-	<input type="submit" value="▶">
+	<label for="playername0">Kandidat 1:</label><input id="playername0"><br>
+	<label for="playername1">Kandidat 2:</label><input id="playername1"><br>
+	<label for="playername2">Kandidat 3:</label><input id="playername2"><br>
+	<label for="playername3">Kandidat 4:</label><input id="playername3"><br>
+	<label for="playername4">Kandidat 5:</label><input id="playername4"><br>
+	<input id="start" type="submit" value="▶">
       </form>
     </div>
 
-    <div id="game" style="display: none">
+    <div id="game">
       <ul id="players">
 	<li><span class="name">Fnord</span><span class="score">£ 35,000</span></li>
 	<li><span class="name">Eris</span><span class="score">£ 5,000</span></li>
@@ -43,7 +45,7 @@
       </div>
     </div>
 
-    <div id="scoreboard" style="display: block">
+    <div id="scoreboard">
       <ul id="tiers">
 	<li>£ 1,000</li>
 	<li>£ 2,000</li>
