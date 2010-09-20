@@ -1,3 +1,9 @@
+var keyHandler;
+$(document).bind('keydown', function(event) {
+    if (keyHandler)
+	keyHandler(String.fromCharCode(event.keyCode));
+});
+
 $(window).bind('load', function() {
     $('#game').hide();
     $('#scoreboard').hide();
@@ -37,7 +43,7 @@ function loadQuizData(done) {
 	   });
 }
 
-var playerNames = [];
+var playerNames = [], playerScores = [];
 
 function startQuiz() {
     var i;
@@ -54,18 +60,51 @@ function startQuiz() {
 	    continue;  // skip empty players
 
 	playerNames[i] = name;
+	playerScores[i] = 0;
 	$('#scoreboard dl').append('<dt></dt><dd>0</dd>');
 	$('#scoreboard dl dt').last().text(name);
 	$('#players').append('<li class="player'+i+'"><span class="name"></span><span class="score">0</span></li>');
 	$('#players li.player'+i+' span.name').text(name);
     }
 
-    $('#setup').fadeOut(100, function() {
+    $('#setup').fadeOut(700, function() {
 	switchToScoreboard();
     });
 }
 
 function switchToScoreboard() {
-    $('#scoreboard').fadeIn(300, function() {
-    });
+    keyHandler = function(key) {
+	if (key === ' ') {
+	    $('#scoreboard').fadeOut(500, function() {
+		switchToGame();
+	    });
+	}
+    };
+
+    $('#scoreboard').fadeIn(300);
+}
+
+// Game screen is the one with the question in question
+function switchToGame() {
+    var i, q = questions[currentQuestion];
+
+    $('#tier').text(q.tier);
+
+    $('#question').empty();
+    if (q.text) {
+	$('#question').append('<p></p>');
+	$('#question p').text(q.text);
+    }
+
+    for(i = 0; i < 4; i++) {
+	var answer = q.answers[i];
+	var li = $('#answers li').eq(i);
+	li.text(answer.text);
+    }
+
+    keyHandler = function(key) {
+    };
+
+    // Instantly show the question:
+    $('#game').show();
 }
