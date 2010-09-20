@@ -63,7 +63,7 @@ function startQuiz() {
             $('#scoreboard dl dt').last().text(name);
             $('#players').append('<li class="player'+i+'"><span class="name"></span><span class="score">0</span></li>');
             $('#players li.player'+i+' span.name').text(name);
-	}
+        }
     }
 
     $('#setup').fadeOut(700, function() {
@@ -112,23 +112,23 @@ function switchToGame() {
         $('#question p').text(q.text);
     }
     if (q.image) {
-	$('#question').append('<img>');
-	$('#question img').attr('src', q.image);
+        $('#question').append('<img>');
+        $('#question img').attr('src', q.image);
     }
     if (q.video) {
-	$('#question').append('<video controls autoplay>');
-	$('#question video').attr('src', q.video);
+        $('#question').append('<video controls autoplay>');
+        $('#question video').attr('src', q.video);
     }
 
     for(i = 0; i < 4; i++) {
         var answer = q.answers[i];
         var liEl = $('#answers li').eq(i);
         liEl.text(answer.text);
-	liEl.removeClass('selected right wrong');
+        liEl.removeClass('selected right wrong');
     }
 
     keyHandler = function(key, keyCode) {
-	if (keyCode === 27) {
+        if (keyCode === 27) {
             // Shortcut: cancel this state
             $('#game').hide();
             switchToScoreboard();
@@ -147,34 +147,35 @@ function switchToGame() {
             $('#answer' + choice).addClass('selected');
         } else if (activePlayer !== null &&
                    keyCode === 13) {
-	    // player confirmed answer or gave up
-	    var answerEl;
-	    if (choice) {
-		answerEl = $('#answer' + choice);
-		answerEl.removeClass('selected');
-	    }
+            // player confirmed answer or gave up
+            var answerEl;
+            if (choice) {
+                answerEl = $('#answer' + choice);
+                answerEl.removeClass('selected');
+            }
             var isRight = choice !== null && q.answers[choice].right === true;
             if (isRight) {
                 playerScores[activePlayer] += q.tier;
-		updateScores();
-	    } else if (choice) {
-		// Hilight the wrong choice
-		answerEl.addClass('wrong');
-	    }
-	    // Hilight all right choices
-	    var i = 0;
-	    q.answers.forEach(function(answer) {
-		if (answer.right === true)
-		    $('#answer' + i).addClass('right');
-		i++;
-	    });
+                updateScores();
+            } else if (choice) {
+                // Hilight the wrong choice
+                answerEl.addClass('wrong');
+            }
+            // Hilight all right choices
+            var i = 0;
+            q.answers.forEach(function(answer) {
+                if (answer.right === true)
+                    $('#answer' + i).addClass('right');
+                i++;
+            });
 
-	    keyHandler = function(key) {
-		if (key === " ") {
-		    // next question:
-		    currentQuestion++;
-		    $('#game').fadeOut(500);
-		    switchToScoreboard();
+            keyHandler = function(key) {
+                if (key === " ") {
+                    // next question:
+                    currentQuestion++;
+                    $('#game').fadeOut(500, function() {
+                        switchToScoreboard();
+		    });
 		}
 	    };
 	}
