@@ -84,6 +84,16 @@ function switchToScoreboard() {
     $('#scoreboard').fadeIn(300);
 }
 
+function updateScores() {
+    for(var i = 0; i < playerNames.length; i++) {
+        if (!playerNames[i])
+            continue;
+
+        $('#scoreboard dl dd').eq(i).text(playerScores[i]);
+        $('#players .player'+i+' .score').text(playerScores[i]);
+    }
+}
+
 // Game screen is the one with the question in question
 function switchToGame() {
     var i, q = questions[currentQuestion];
@@ -139,6 +149,7 @@ function switchToGame() {
             var isRight = choice !== null && q.answers[choice].right === true;
             if (isRight) {
                 playerScores[activePlayer] += q.tier;
+		updateScores();
 	    } else if (choice) {
 		// Hilight the wrong choice
 		answerEl.addClass('wrong');
