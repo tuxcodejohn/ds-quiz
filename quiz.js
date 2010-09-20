@@ -112,6 +112,14 @@ function switchToGame() {
         $('#question').append('<p></p>');
         $('#question p').text(q.text);
     }
+    if (q.image) {
+	$('#question').append('<img>');
+	$('#question img').attr('src', q.image);
+    }
+    if (q.video) {
+	$('#question').append('<video controls autoplay>');
+	$('#question video').attr('src', q.video);
+    }
 
     for(i = 0; i < 4; i++) {
         var answer = q.answers[i];
