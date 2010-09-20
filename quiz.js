@@ -56,15 +56,14 @@ function startQuiz() {
 
     for(i = 0; i < 5; i++) {
         var name = $('#playername' + i).val();
-        if (!name)
-            continue;  // skip empty players
-
-        playerNames[i] = name;
-        playerScores[i] = 0;
-        $('#scoreboard dl').append('<dt></dt><dd>0</dd>');
-        $('#scoreboard dl dt').last().text(name);
-        $('#players').append('<li class="player'+i+'"><span class="name"></span><span class="score">0</span></li>');
-        $('#players li.player'+i+' span.name').text(name);
+        if (name) {
+            playerNames[i] = name;
+            playerScores[i] = 0;
+            $('#scoreboard dl').append('<dt></dt><dd>0</dd>');
+            $('#scoreboard dl dt').last().text(name);
+            $('#players').append('<li class="player'+i+'"><span class="name"></span><span class="score">0</span></li>');
+            $('#players li.player'+i+' span.name').text(name);
+	}
     }
 
     $('#setup').fadeOut(700, function() {
