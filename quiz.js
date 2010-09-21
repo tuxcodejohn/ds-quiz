@@ -96,7 +96,7 @@ function updateScores() {
 // Game screen is the one with the question in question
 function switchToGame() {
     var i, q = questions[currentQuestion];
-    var activePlayer = null, choice = null;
+    var activePlayer = null, choice = null;  // can be null
 
     var updateTier = function() {
         var s = q.tier;
@@ -135,8 +135,11 @@ function switchToGame() {
         } else if (activePlayer === null &&
             key > 0 && key <= playerNames.length) {
             // No active player yet, but somebody hit a button!
-            activePlayer = parseInt(key, 10) - 1;
-            updateTier();
+            var player = parseInt(key, 10) - 1;  // operating 0-indexed
+            if (playerNames[player]) {
+                activePlayer = player;
+		updateTier();
+	    }
         } else if (activePlayer !== null &&
                    "abcd".indexOf(key) >= 0) {
             // player pronounced the answer
@@ -149,7 +152,7 @@ function switchToGame() {
                    keyCode === 13) {
             // player confirmed answer or gave up
             var answerEl;
-            if (choice) {
+            if (choice !== null) {
                 answerEl = $('#answer' + choice);
                 answerEl.removeClass('selected');
             }
@@ -157,7 +160,7 @@ function switchToGame() {
             if (isRight) {
                 playerScores[activePlayer] += q.tier;
                 updateScores();
-            } else if (choice) {
+            } else if (choice !== null) {
                 // Hilight the wrong choice
                 answerEl.addClass('wrong');
             }
