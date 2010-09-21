@@ -85,11 +85,11 @@ function switchToScoreboard() {
 
 function updateScores() {
     for(var i = 0; i < playerNames.length; i++) {
-        if (!playerNames[i])
-            continue;
-
-        $('#scoreboard dl dd').eq(i).text(playerScores[i]);
-        $('#players .player'+i+' .score').text(playerScores[i]);
+        if (playerNames[i]) {
+	    // FIXME: eq(i) is bad when first player is empty
+	    $('#scoreboard dl dd').eq(i).text(playerScores[i]);
+            $('#players .player'+i+' .score').text(playerScores[i]);
+	}
     }
 }
 
