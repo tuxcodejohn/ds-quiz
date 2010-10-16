@@ -80,6 +80,10 @@ function switchToScoreboard() {
         }
     };
 
+    for(var i = 0; i < currentQuestion; i++) {
+	$('#tiers li').eq(i).addClass('done');
+    }
+
     $('#scoreboard').fadeIn(300);
 }
 

@@ -39,6 +39,10 @@ p {
   color: white;
   font-weight: bold;
 }
+.done {
+  font-weight: bold;
+  color: white;
+}
 
 #tier { 
   color: #ccc;
