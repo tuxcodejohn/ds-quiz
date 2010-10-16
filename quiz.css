@@ -39,13 +39,9 @@ p {
   color: white;
   font-weight: bold;
 }
-.done {
-  font-weight: bold;
-  color: white;
-}
 
 #tier { 
-  color: #ccc;
+  color: #777;
   font-weight: bold;
 }
 #question { 
@@ -103,6 +99,11 @@ ul#tiers {
 }
 ul#tiers li {
   display: list-item;
+  color: #777;
+}
+ul#tiers li.done {
+  font-weight: bold;
+  color: white;
 }
 
 #scoreboard dl {
