@@ -198,9 +198,13 @@ function switchToGame() {
             if (isRight) {
                 playerScores[activePlayer] += q.tier;
                 updateScores();
-            } else if (choice !== null) {
-                // Hilight the wrong choice
-                answerEl.addClass('wrong');
+            } else {
+		playerScores[activePlayer] -= q.tier;
+                updateScores();
+
+		if (choice !== null)
+		    // Hilight the wrong choice
+		    answerEl.addClass('wrong');
             }
             // Hilight all right choices
             var i = 0;
