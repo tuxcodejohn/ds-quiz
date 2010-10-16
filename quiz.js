@@ -59,7 +59,7 @@ function startQuiz() {
         if (name) {
             playerNames[i] = name;
             playerScores[i] = 0;
-            $('#scoreboard dl').append('<dt></dt><dd>0</dd>');
+            $('#scoreboard dl').append('<dt></dt><dd><span class="score">0</span><img src="50-50.png" class="fiftyfifty"><img src="audience.png" class="audience"><img src="phone.png" class="phone"></dd>');
             $('#scoreboard dl dt').last().text(name);
             $('#players').append('<li class="player'+i+'"><span class="name"></span><span class="score">0</span></li>');
             $('#players li.player'+i+' span.name').text(name);
@@ -87,7 +87,7 @@ function updateScores() {
     for(var i = 0; i < playerNames.length; i++) {
         if (playerNames[i]) {
 	    // FIXME: eq(i) is bad when first player is empty
-	    $('#scoreboard dl dd').eq(i).text(playerScores[i]);
+	    $('#scoreboard dl dd').eq(i).find('.score').text(playerScores[i]);
             $('#players .player'+i+' .score').text(playerScores[i]);
 	}
     }

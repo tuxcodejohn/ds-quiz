@@ -110,3 +110,6 @@ ul#tiers li {
 #scoreboard dl dd {
   margin-left: 4em;
 }
+#scoreboard dl dd img {
+  margin-left: 0.5em;
+}
