@@ -43,7 +43,7 @@ function loadQuizData(done) {
            });
 }
 
-var playerNames = [], playerScores = [];
+var playerNames = [], playerScores = [], playerJokers = [];
 
 function startQuiz() {
     var i;
@@ -93,6 +93,33 @@ function updateScores() {
     }
 }
 
+function takeJoker(activePlayer, joker) {
+    if (activePlayer === null)
+	// No active player
+	return;
+
+    if (!playerJokers.hasOwnProperty(activePlayer))
+	playerJokers[activePlayer] = {};
+
+    if (playerJokers[activePlayer][joker])
+	// Joker already taken
+	return;
+
+    playerJokers[activePlayer][joker] = true;
+    $('#tier').append('<img src="' + joker + '.png">');
+    $('#scoreboard dd').eq(activePlayer).find('.' + joker).remove();
+
+    if (joker === 'fiftyfifty') {
+	var h1, h2, answers = questions[currentQuestion].answers;
+	do {
+	    h1 = Math.floor(Math.random() * 4);
+	    h2 = Math.floor(Math.random() * 4);
+	} while(answers[h1].right || answers[h2].right || h1 === h2);
+	$('#answer' + h1).fadeTo(500, 0.1);
+	$('#answer' + h2).fadeTo(500, 0.1);
+    }
+}
+
 // Game screen is the one with the question in question
 function switchToGame() {
     var i, q = questions[currentQuestion];
@@ -125,6 +152,7 @@ function switchToGame() {
         var liEl = $('#answers li').eq(i);
         liEl.text(answer.text);
         liEl.removeClass('selected right wrong');
+	liEl.fadeTo(0, 1);
     }
 
     keyHandler = function(key, keyCode) {
@@ -181,6 +209,15 @@ function switchToGame() {
 		    });
 		}
 	    };
+	} else if (activePlayer !== null &&
+		   key === 'q') {
+	    takeJoker(activePlayer, 'fiftyfifty');
+	} else if (activePlayer !== null &&
+		   key === 'w') {
+	    takeJoker(activePlayer, 'audience');
+	} else if (activePlayer !== null &&
+		   key === 'e') {
+	    takeJoker(activePlayer, 'phone');
 	}
     };
 
