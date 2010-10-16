@@ -5,6 +5,7 @@ if (!window.console) {
 
 var keyHandler;
 $(document).bind('keydown', function(event) {
+    console.log('cc: '+event.charCode+'/'+String.fromCharCode(event.keyCode).toLowerCase()+' kc: '+event.keyCode);
     if (keyHandler)
         keyHandler(String.fromCharCode(event.keyCode).toLowerCase(), event.keyCode);
 });
@@ -170,20 +171,20 @@ function switchToGame() {
             $('#game').hide();
             switchToScoreboard();
         } else if (activePlayer === null &&
-            key > 0 && key <= playerNames.length) {
+		   "abcde".indexOf(key) >= 0) {
             // No active player yet, but somebody hit a button!
-            var player = parseInt(key, 10) - 1;  // operating 0-indexed
+            var player = "abcde".indexOf(key);
             if (playerNames[player]) {
                 activePlayer = player;
 		updateTier();
 	    }
         } else if (activePlayer !== null &&
-                   "abcd".indexOf(key) >= 0) {
+                   "1234".indexOf(key) >= 0) {
             // player pronounced the answer
             if (choice !== null)
                 $('#answer' + choice).removeClass('selected');
 
-            choice = "abcd".indexOf(key);
+            choice = "1234".indexOf(key);
             $('#answer' + choice).addClass('selected');
         } else if (activePlayer !== null &&
                    keyCode === 13) {
