@@ -1,3 +1,8 @@
+if (!window.console) {
+    var stub = function() { };
+    window.console = { log: stub, error: stub, warn: stub };
+}
+
 var keyHandler;
 $(document).bind('keydown', function(event) {
     if (keyHandler)
