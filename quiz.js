@@ -79,7 +79,9 @@ function startQuiz() {
 
 function switchToScoreboard() {
     keyHandler = function(key) {
-        if (key === ' ') {
+        if (key === ' ' &&
+	    currentQuestion < questions.length) {
+
             $('#scoreboard').fadeOut(500, function() {
                 switchToGame();
             });
