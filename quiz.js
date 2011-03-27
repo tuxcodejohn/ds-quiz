@@ -65,7 +65,7 @@ function startQuiz() {
         if (name) {
             playerNames[i] = name;
             playerScores[i] = 0;
-            $('#scoreboard dl').append('<dt></dt><dd><span class="score">0</span><img src="fiftyfifty.png" class="fiftyfifty"><img src="audience.png" class="audience"><img src="phone.png" class="phone"></dd>');
+            $('#scoreboard dl').append('<dt></dt><dd><span class="score">0</span><img src="fiftyfifty.svg" class="fiftyfifty"><img src="audience.svg" class="audience"><img src="phone.svg" class="phone"></dd>');
             $('#scoreboard dl dt').last().text(name);
             $('#players').append('<li class="player'+i+'"><span class="name"></span><span class="score">0</span></li>');
             $('#players li.player'+i+' span.name').text(name);
@@ -118,7 +118,7 @@ function takeJoker(activePlayer, joker) {
 	return;
 
     playerJokers[activePlayer][joker] = true;
-    $('#tier').append('<img src="' + joker + '.png">');
+    $('#tier').append('<img src="' + joker + '.svg">');
     $('#scoreboard dd').eq(activePlayer).find('.' + joker).remove();
 
     if (joker === 'fiftyfifty') {
